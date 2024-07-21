@@ -1,0 +1,14 @@
+{
+  "window.zoomLevel": 0,
+  "[c]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12
+  },
+  "files.associations": {
+    "errno.h": "c"
+  }
+}
