@@ -21,13 +21,6 @@ typedef struct LedStatus
     uint8_t led3;
 } LedStatus;
 
-typedef struct StatusBitFields
-{
-    uint8_t led1 : 1;
-    uint8_t led2 : 3;
-    uint8_t led3 : 4;
-} StatusBitFields;
-
 typedef struct BLEHeader
 {
     uint16_t pdu : 4;
@@ -42,61 +35,68 @@ typedef struct BLEHeader
 void print_bits(uint8_t *data, int size);
 void print_bits_16(uint16_t *data, int size);
 
+typedef struct StatusBitFields
+{
+    uint8_t led1 : 1;
+    uint8_t led2 : 3;
+    uint8_t led3 : 4;
+} StatusBitFields;
+
 int main()
 {
-    Dude dude = {
-        .active = true,
-        .name = "Dude",
-        .dim = 3,
-        .pos = {100, 200, 300},
-    };
-
     StatusBitFields status = {
-        .led1 = 0,
-        .led2 = 1,
-        .led3 = 15,
+        .led1 = 1,
+        .led2 = 7,
+        .led3 = 16,
     };
 
     print_bits((uint8_t *)&status, sizeof(status));
 
-    BLEHeader header = {
-        .pdu = 3,
-        .t_add = 1,
-        .length = 63,
-    };
+    // Dude dude = {
+    //     .active = true,
+    //     .name = "Dude",
+    //     .dim = 3,
+    //     .pos = {100, 200, 300},
+    // };
 
-    // 0011001000100000
-    // 1100001000010000
-    print_bits_16((uint16_t *)&header, sizeof(status));
+    // BLEHeader header = {
+    //     .pdu = 3,
+    //     .t_add = 1,
+    //     .length = 63,
+    // };
 
-    Dude *ptrDudu = &dude;
+    // // 0011001000100000
+    // // 1100001000010000
+    // print_bits_16((uint16_t *)&header, sizeof(status));
 
-    ptrDudu->friend = malloc(sizeof(Dude));
+    // Dude *ptrDudu = &dude;
 
-    Dude *friend = ptrDudu->friend;
-    friend->name = "Elon";
-    friend->active = true;
-    friend->pos[0] = 122;
-    friend->pos[1] = 155;
-    friend->pos[2] = 177;
-    friend->friend = &dude;
+    // ptrDudu->friend = malloc(sizeof(Dude));
 
-    int num = 10;
-    Dude *arrOfDudes = malloc(num * sizeof(Dude));
+    // Dude *friend = ptrDudu->friend;
+    // friend->name = "Elon";
+    // friend->active = true;
+    // friend->pos[0] = 122;
+    // friend->pos[1] = 155;
+    // friend->pos[2] = 177;
+    // friend->friend = &dude;
 
-    arrOfDudes[0].name = "Bill";
-    arrOfDudes[0].friend = friend;
+    // int num = 10;
+    // Dude *arrOfDudes = malloc(num * sizeof(Dude));
 
-    *(arrOfDudes + 1) = dude;
-    (arrOfDudes + 1)->friend = arrOfDudes[0].friend;
-    printf("%s is friends width %s\n", arrOfDudes[1].name, arrOfDudes[1].friend->name);
+    // arrOfDudes[0].name = "Bill";
+    // arrOfDudes[0].friend = friend;
+
+    // *(arrOfDudes + 1) = dude;
+    // (arrOfDudes + 1)->friend = arrOfDudes[0].friend;
+    // printf("%s is friends width %s\n", arrOfDudes[1].name, arrOfDudes[1].friend->name);
 
     return EXIT_SUCCESS;
 }
 
 void print_bits(uint8_t *data, int size)
 {
-    printf("8: ");
+    -printf("8: ");
     for (int i = 0; i < size; i++)
     {
         uint8_t byte = data[i];

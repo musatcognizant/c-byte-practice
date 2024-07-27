@@ -9,6 +9,7 @@
     "editor.fontSize": 12
   },
   "files.associations": {
-    "errno.h": "c"
+    "errno.h": "c",
+    "stdint.h": "c"
   }
 }
