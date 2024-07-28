@@ -107,9 +107,10 @@
           "-std=c11",
           "-g",
           "-Wall",
+          // THIS IS NOT RIGHT
           "${workspaceFolder}\\*.c",
           "-o",
-          "${workspaceFolder}/build/${fileBasenameNoExtension}"
+          "${workspaceFolder}/build/main"
         ]
       },
       "osx": {
@@ -120,7 +121,7 @@
           "-Wall",
           "${workspaceFolder}/*.c",
           "-o",
-          "${workspaceFolder}/build/${fileBasenameNoExtension}"
+          "${workspaceFolder}/build/main"
         ]
       }
     },
